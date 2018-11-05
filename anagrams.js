@@ -1,23 +1,10 @@
-// input: string
-// output: array
+// // input: string
+// // output: array
 
-// function anagrams(str, arr = []) {
-//   // base case
-//   if (!str.length) {
-//     return '';
-//   }
+function anagrams(str) {
 
-//   // general case
-//   // use a prefix
-//   for (let i=0; i<str.length; i++) {
-//     return str[i] + anagrams(str.slice(0, i) + str.slice(i + 1));
-//   }
-// }
-
-function anagrams(str){
-  
   // base case
-  if(str === ''){
+  if (str === '') {
     console.log(' base case');
     return [''];
   }
@@ -25,7 +12,7 @@ function anagrams(str){
   // general case
   const list = [];
 
-  for(let i = 0; i < str.length; i++){
+  for (let i = 0; i < str.length; i++) {
     const prefix = str.slice(i, i + 1);
     const before = str.slice(0, i);
     const after = str.slice(i + 1);
@@ -41,3 +28,23 @@ function anagrams(str){
 
 console.log(anagrams('east'));
 console.log(anagrams('east').length);
+
+// input: str
+// output: array
+
+function anagrams2(str, prefix = '') {
+  if (!str.length) {
+    return prefix;
+  }
+
+  let result = [];
+  for (let i = 0; i < str.length; i++) {
+    const before = str.slice(0, i);
+    const after = str.slice(i + 1);
+    result = result.concat(anagrams2(before + after, prefix + str[i]));
+  }
+  return result;
+}
+
+console.log(anagrams2('east'));
+console.log(anagrams2('east').length);
