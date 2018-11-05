@@ -1,13 +1,13 @@
 // input: array of numbers
 // output: array of numbers
 
-function arrayDouble(array){
+function arrayDouble(array) {
   // base case
-  if(!array.length){
+  if (!array.length) {
     return [];
   } else {
     //general case
-    return [ array[0] * 2, ...arrayDouble(array.slice(1))];
+    return [array[0] * 2, ...arrayDouble(array.slice(1))];
   }
 }
 
